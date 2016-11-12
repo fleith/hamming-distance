@@ -3,6 +3,14 @@ language: cpp
 compiler:
   - clang
 
+python: 3.5
+
+sudo: required
+
+os: linux
+
+dist: yakkety
+
 before_script:
   - mkdir bin
   - cd bin
