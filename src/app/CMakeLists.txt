@@ -1,3 +1,3 @@
 set(SOURCE_FILES main.cpp)
 
-add_executable(hamming_distance ${SOURCE_FILES})
+add_executable(app ${SOURCE_FILES})
