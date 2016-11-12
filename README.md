@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/fleith/hamming-distance.svg?branch=master)](https://travis-ci.org/fleith/hamming-distance)
+
 # Hamming distance calculator
 
 Library that calculates the hamming distance for 2 binary input blobs and CLI to use it.
