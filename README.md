@@ -6,17 +6,20 @@ Library that calculates the hamming distance for 2 binary input blobs and CLI to
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+These instructions will guide you to build the project, running and testing.
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+Before build the project you need to install on your machine the follow dependencies:
 
-```
-Give examples
-```
+boost c++ 1.62 [required]: used to validate program arguments
+cmake 3.6 [required]: build generator
+python 3.5 [required]: used to run acceptance tests (integration tests)
+c++11 compiler [required]
+doxygen [optional] : used to generate source documentation
 
-### Installing
+
+### Build
 
 A step by step series of examples that tell you have to get a development env running
 
