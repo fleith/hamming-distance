@@ -12,11 +12,11 @@ These instructions will guide you to build the project, running and testing.
 
 Before build the project you need to install on your machine the follow dependencies:
 
-boost c++ 1.62 [required]: used to validate program arguments
-cmake 3.6 [required]: build generator
-python 3.5 [required]: used to run acceptance tests (integration tests)
-c++11 compiler [required]
-doxygen [optional] : used to generate source documentation
+* boost c++ 1.62 [required]: used to validate program arguments
+* cmake 3.6 [required]: build generator
+* python 3.5 [required]: used to run acceptance tests (integration tests)
+* c++11 compiler [required]
+* doxygen [optional] : used to generate source documentation
 
 
 ### Build
