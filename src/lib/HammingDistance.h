@@ -6,12 +6,19 @@
 #include <cstdint>
 #include <string>
 
+class InvalidBinaryNumber: public std::runtime_error
+{
+public:
+    InvalidBinaryNumber(const std::string& message);
+};
+
 class HammingDistance {
 public:
     HammingDistance();
     ~HammingDistance();
 
-    int32_t calculate(const std::string& a, const std::string& b) const;
+    int32_t calculate(const std::string& blob_a, const std::string& blob_b) const;
+
 };
 
 
