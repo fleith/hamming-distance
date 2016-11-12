@@ -13,6 +13,9 @@ namespace {
 
 InvalidBinaryNumber::InvalidBinaryNumber(const std::string &message) : runtime_error(message) {
 }
+InvalidBinaryBlobSize::InvalidBinaryBlobSize(const std::string &message) : runtime_error(message) {
+
+}
 
 HammingDistance::HammingDistance() {
 }
@@ -20,6 +23,11 @@ HammingDistance::~HammingDistance() {
 }
 
 int32_t HammingDistance::calculate(const std::string &blob_a, const std::string &blob_b) const {
+    if (blob_a.size() != blob_b.size())
+    {
+        throw InvalidBinaryBlobSize("The blob sizes must be equal");
+    }
+
     int32_t distance = 0;
     for (size_t i = 0; i < blob_a.size(); ++i) {
         validate_binary(blob_a[i]);
@@ -29,5 +37,6 @@ int32_t HammingDistance::calculate(const std::string &blob_a, const std::string 
 
     return distance;
 }
+
 
 

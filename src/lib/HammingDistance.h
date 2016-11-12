@@ -12,6 +12,12 @@ public:
     InvalidBinaryNumber(const std::string& message);
 };
 
+class InvalidBinaryBlobSize: public std::runtime_error
+{
+public:
+    InvalidBinaryBlobSize(const std::string& message);
+};
+
 class HammingDistance {
 public:
     HammingDistance();
