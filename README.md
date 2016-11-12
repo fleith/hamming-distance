@@ -32,7 +32,7 @@ Enter inside the folder,
 ```
 $ cd bin
 ```
-Call CMake to generate build configuration (we use folder ".." that indicate where is the root CMakeList.txt), 
+Call CMake to generate build configuration (we use folder ".." that indicate where is the root CMakeLists.txt), 
 ```
 $ cmake ..
 ```
