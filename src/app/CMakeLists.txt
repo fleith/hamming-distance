@@ -1,7 +1,7 @@
 
 
 ### Checking Boost C++ library
-find_package(Boost 1.54 REQUIRED program_options)
+find_package(Boost 1.62 REQUIRED program_options)
 if(Boost_FOUND)
     include_directories(${Boost_INCLUDE_DIRS})
 endif(Boost_FOUND)
