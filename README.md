@@ -36,62 +36,56 @@ Call CMake to generate build configuration (we use folder ".." that indicate whe
 ```
 $ cmake ..
 ```
-And repeat
-
+Now you can call the make file
 ```
-until finished
-$ cmake -DBUILD_SHARED_LIBS=ON ../
+$ make
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
+After build the project you can run tests and the CLI.
 
 ## Running the tests
 
-Explain how to run the automated tests for this system
+After you call make to generate the binaries, follow:
 
-### Break down into end to end tests
-
-Explain what these tests test and why
-
+Run unit tests and acceptance tests (using CTest)
 ```
-Give an example
+$ make test
 ```
 
-### And coding style tests
-
-Explain what these tests test and why
-
+If you like to run detailed unit tests, follow:
 ```
-Give an example
+$ ./src/test/hamming_distance_tests
 ```
 
-## Deployment
+If you like to run detailed acceptance tests, follow:
+```
+$ python3 ../src/test/test_acceptance.py src/app/hdc
+```
 
-Add additional notes about how to deploy this on a live system
+## Running the CLI
 
-## Built With
+For running the CLI, follow:
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+Try call the help command
+```
+$ ./src/app/hdc --help
+```
 
-## Contributing
+Calculate the Hamming distance
+```
+$ ./src/app/hdc 11001011 00111001
+```
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+Calculate the Hamming distance specifying the blobs
+```
+$ ./src/app/hdc --blob1 11001011 --blob2 00111001
+```
 
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
-
-## Authors
-
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+In the examples above the result is 5.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the GNU GENERAL PUBLIC LICENSE - see the [LICENSE](LICENSE) file for details
 
 ## Suggestions
 
@@ -99,12 +93,7 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 * Improve generated documentation
 * Add code coverage (gcov, etc)
 * Performance tests
-* Accept files as input (Try load small blocks)
+* Accept files as input on CLI (Try load small blocks)
 * Create a RestAPI to use the library
 * Implement a frontend to use RestAPI
 
-## Acknowledgments
-
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
