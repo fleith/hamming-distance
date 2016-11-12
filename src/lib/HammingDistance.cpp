@@ -2,10 +2,8 @@
 
 
 namespace {
-    void validate_binary(char c)
-    {
-        if ((c != '0') && (c != '1'))
-        {
+    void validate_binary(char c) {
+        if ((c != '0') && (c != '1')) {
             throw InvalidBinaryNumber("Accept only 0 or 1 in strings");
         }
     }
@@ -13,18 +11,18 @@ namespace {
 
 InvalidBinaryNumber::InvalidBinaryNumber(const std::string &message) : runtime_error(message) {
 }
-InvalidBinaryBlobSize::InvalidBinaryBlobSize(const std::string &message) : runtime_error(message) {
 
+InvalidBinaryBlobSize::InvalidBinaryBlobSize(const std::string &message) : runtime_error(message) {
 }
 
 HammingDistance::HammingDistance() {
 }
+
 HammingDistance::~HammingDistance() {
 }
 
 int32_t HammingDistance::calculate(const std::string &blob_a, const std::string &blob_b) const {
-    if (blob_a.size() != blob_b.size())
-    {
+    if (blob_a.size() != blob_b.size()) {
         throw InvalidBinaryBlobSize("The blob sizes must be equal");
     }
 
