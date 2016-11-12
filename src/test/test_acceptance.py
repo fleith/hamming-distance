@@ -3,13 +3,6 @@ import subprocess
 import sys
 import re
 
-def format_string(text):
-    actual = text[:80]
-    count = 80
-    while(actual):
-        print("\"{0}\"".format(actual))
-        count += 80
-        actual = text[count - 80:count]
 
 def hamming_distance_from_stdout(stdout):
     m = re.search('.*Hamming distance is ([0-9]+).*', str(stdout))
@@ -17,14 +10,47 @@ def hamming_distance_from_stdout(stdout):
 
 
 class HammingDistanceAppTestCase(unittest.TestCase):
-    PROGRAM = ""
+    PROGRAM = "hdc"
+
+    def test_invalid_size_input(self):
+        cp = subprocess.run([self.PROGRAM, "10", "001"], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+        self.assertEqual(1, cp.returncode)
+        self.assertTrue(re.match(".*The blob sizes must be equal.*", str(cp.stdout)))
+
+    def test_one_input(self):
+        cp = subprocess.run([self.PROGRAM, "001"], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+        self.assertEqual(0, cp.returncode)
+        self.assertTrue(re.match(".*You must specify two binary blobs.*Usage:", str(cp.stdout)))
+
+    def test_input_with_arguments(self):
+        cp = subprocess.run([self.PROGRAM, "--blob1", "001", "--blob2", "000"], stdout=subprocess.PIPE,
+                            stderr=subprocess.STDOUT)
+        self.assertEqual(0, cp.returncode)
+        self.assertEqual(1, hamming_distance_from_stdout(cp.stdout))
+
+    def test_input_help(self):
+        cp = subprocess.run([self.PROGRAM, "--help"], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+        self.assertEqual(0, cp.returncode)
+        self.assertTrue(re.match(".*Usage:.*Examples:.*Arguments:", str(cp.stdout)))
 
     def test_small_input(self):
         cp = subprocess.run([self.PROGRAM, "100", "001"], stdout=subprocess.PIPE)
+        self.assertEqual(0, cp.returncode)
         self.assertEqual(2, hamming_distance_from_stdout(cp.stdout))
+
+    def test_empty_input(self):
+        cp = subprocess.run([self.PROGRAM], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+        self.assertEqual(0, cp.returncode)
+        self.assertTrue(re.match(".*You must specify two binary blobs.*Usage:", str(cp.stdout)))
+
+    def test_invalid_binary(self):
+        cp = subprocess.run([self.PROGRAM, "10034", "23001"], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+        self.assertEqual(1, cp.returncode)
+        self.assertTrue(re.match(".*Accept only 0 or 1 in strings.*", str(cp.stdout)))
 
     def test_valid_blobs(self):
         cp = subprocess.run([self.PROGRAM, "01101010", "11011011"], stdout=subprocess.PIPE)
+        self.assertEqual(0, cp.returncode)
         self.assertEqual(4, hamming_distance_from_stdout(cp.stdout))
 
     def test_big_blobs(self):
@@ -428,6 +454,7 @@ class HammingDistanceAppTestCase(unittest.TestCase):
                              "0001000011101111100100110100100101110111"
                              ],
                             stdout=subprocess.PIPE)
+        self.assertEqual(0, cp.returncode)
         self.assertEqual(7896, hamming_distance_from_stdout(cp.stdout))
 
 
