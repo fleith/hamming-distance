@@ -21,14 +21,21 @@ Before build the project you need to install on your machine the follow dependen
 
 ### Build
 
-A step by step series of examples that tell you have to get a development env running
+A step by step series of examples that tell you how build the project.
 
-Say what the step will be
+First step you need to create a new directory on root project (hamming-distance folder).
 
 ```
-Give the example
+$ mkdir bin
 ```
-
+Enter inside the folder,
+```
+$ cd bin
+```
+Call CMake to generate build configuration (we use folder ".." that indicate where is the root CMakeList.txt), 
+```
+$ cmake ..
+```
 And repeat
 
 ```
