@@ -11,6 +11,10 @@ os: linux
 
 dist: yakkety
 
+before_install:
+  - sudo apt-get -qq update
+  - sudo apt-get install -y libboost-dev
+
 before_script:
   - mkdir bin
   - cd bin
