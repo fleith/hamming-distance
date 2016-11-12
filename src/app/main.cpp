@@ -51,7 +51,7 @@ int main(int argc, char *argv[]) {
     }
     catch (...) {
         std::cerr << "Exception of unknown type!\n";
-        return 1;
+        return 2;
     }
 
     return 0;
