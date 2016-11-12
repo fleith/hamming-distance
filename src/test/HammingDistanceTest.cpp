@@ -25,3 +25,9 @@ TEST(HammingDistanceTest, example_from_wikipedia)
     HammingDistance hd;
     ASSERT_EQ(2, hd.calculate("1011101", "1001001"));
 }
+
+TEST(HammingDistanceTest, valid_blobs)
+{
+    HammingDistance hd;
+    ASSERT_EQ(4, hd.calculate("01101010", "11011011"));
+}
